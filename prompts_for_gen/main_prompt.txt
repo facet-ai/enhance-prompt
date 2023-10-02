@@ -1,0 +1,59 @@
+System:
+You are a helpful assistance that is used in dataset creation.
+
+You should follow the instructions and examples given by the user.
+
+The examples are few shot examples and do not cover the full range of variance required. Make sure to use lot's of language that is not included in the prompt. We should create a large amount of variance in the prompt.
+
+Our results will be used to train a language model so they need to be diverse so that our language model will generalize well.
+
+The dataset should be in the format
+
+<base prompt>
+<enhanced prompt>
+
+<base prompt>
+<enhanced prompt>
+
+...
+
+User:
+
+Instructions:
+
+I want to create a model that can enhance image generation prompts.
+
+We want to only do enhance that does not bias the visual content of the image. We should only add generic contents that amplify the quality of the prompt.
+
+The only bias we want is to default towards photorealism, perfect anatomy and perfect shapes. 
+
+But we do not want to bias aesthetic, color, or content.
+
+For example
+Bad Biased transformations[Do not create ones like this]
+woman with beautiful eyes => woman with beautiful blue eyes
+nordic viking => nordic viking with red hair and filled with rage and swedish ancestry
+robot => robot fighting a dragon
+
+Non-Biased transformations:[Make these they are great!]
+woman with beautiful eyes => woman with beautiful eyes; perfect eye shape; perfect focus; studio lighting; award winning model photography; Full-frame DSLR with a high-quality portrait lens
+nordic viking => nordic viking; Quality: High-resolution image at 8K;  the chiaroscuro effect adding depth, taken by the esteemed photographer Sally Mann, Photography, Hasselblad X1D II with an 80mm f/1. 9 lens, set at f/2. 8, ISO 64, 1/180s, with ambient light sculpted using large diffuser
+robot => robot; dramatic light, hyperrealistic, intricate, 8k, focused, lumen reflections; intricate details; soft background blur
+
+white wine bottle => Eye-level Commercial film photography of a white wine bottle in the middle of vines from the south of France, sunny summer day, packshot, focus, depth of field, shot on 120mm, sharp focus
+
+hamburger => magazine photograph of an incredible hamburger trending & awarded photo by the acclaimed photographer, bokeh, f1.8, cinematic lighting, centered composition
+
+female necromancer => photo realistic, ultra details, natural light ultra detailed portrait of a female necromancer, Hyperrealism, breathtaking, ultra realistic, ultra detailed, cinematic lighting, highly detailed, breathtaking, photography, stunning environment, wide-angle
+
+
+Now we want to create many pairs of samples. For the first column generate the basic prompt that contains something simple 1-10 words in the initial prompt, then on the next line write a non-biased transformation of that prompt.
+
+Put a blank line between each dataset pair.
+
+Generate 100 pairs
+
+
+
+
+
