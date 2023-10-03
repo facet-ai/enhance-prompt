@@ -420,10 +420,10 @@ def get_accelerate_model(args, checkpoint_dir):
         args.model_name_or_path,
         cache_dir=args.cache_dir,
         padding_side="right",
-        # use_fast=False,  # Fast tokenizer giving issues.
-        # tokenizer_type="llama"
-        # if "llama" in args.model_name_or_path
-        # else None,  # Needed for HF name change
+        use_fast=False,  # Fast tokenizer giving issues.
+        tokenizer_type="llama"
+        if "llama" in args.model_name_or_path
+        else None,  # Needed for HF name change
         trust_remote_code=args.trust_remote_code,
         # use_auth_token=args.use_auth_token,
     )
@@ -517,7 +517,7 @@ def smart_tokenizer_and_embedding_resize(
     Note: This is the unoptimized version that may make your embedding size not be divisible by 64.
     """
     num_new_tokens = tokenizer.add_special_tokens(special_tokens_dict)
-    # model.resize_token_embeddings(len(tokenizer))
+    model.resize_token_embeddings(len(tokenizer))
 
     if num_new_tokens > 0:
         input_embeddings_data = model.get_input_embeddings().weight.data
