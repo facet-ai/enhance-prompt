@@ -15,7 +15,7 @@ def text_to_csv(file_paths, format_type="default"):
             input_line = lines[i].strip()
             output_line = lines[i + 1].strip()
             if format_type == "input_output":
-                row = f"input: {input_line}\noutput: {output_line}"
+                row = f"[input] {input_line} [output] {output_line}"
             else:
                 row = f"{input_line}\n{output_line}"
             rows.append({"text": row})
